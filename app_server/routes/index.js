@@ -1,26 +1,17 @@
+
 var express = require('express');
 var router = express.Router();
-var ctrMain = require('../controllers/main');
+var ctrLocations = require('../controllers/locations');
+var ctrOthers = require('../controllers/others')
 
 
-/*GET home page */
-router.get('/', ctrMain.index);
+/*Locations pages */
+router.get('/', ctrLocations.homelist);
+router.get('/location', ctrLocations.locationInfo);
+router.get('/location/review/new', ctrLocations.addReview);
+
+/* other pages */
+router.get('/about', ctrOthers.about);
 
 module.exports = router;
 
-/* GET home page. 
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
-module.exports = router;
-
-take anonymous functions and define it 
-const homepageController = function (req, res) {
-  res.render('index', {title: 'Express'});
-};
-
- GET home page 
-router.get('/', homepageController);
-
-*/
